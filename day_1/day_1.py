@@ -21,7 +21,7 @@ def parse_lists(fileName):
         
         return firstList, secondList
 
-def getListDistances():
+def getListDistances_part_1():
     lists = parse_lists('input.txt')
     distance = []
     for i in range(len(lists[0])):
@@ -30,4 +30,16 @@ def getListDistances():
     distance_sum = functools.reduce(lambda x, y: x + y, distance)
     print(distance_sum)
 
-getListDistances()
+def getListDistances_part_2():
+    input_lists = parse_lists('input.txt')
+    similarity_score = []
+    for i in range(len(input_lists[0])):
+
+        found_values = list(filter(lambda x: x == input_lists[0][i], input_lists[1]))
+        similarity_score.append(len(found_values) * input_lists[0][i])
+
+    similarity_score_sum = functools.reduce(lambda x, y: x + y, similarity_score)
+
+    print(similarity_score_sum)
+
+getListDistances_part_2()
